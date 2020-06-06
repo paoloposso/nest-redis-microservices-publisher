@@ -14,7 +14,8 @@ export class AppController {
 
   @Get()
   getHello() {
-   this.client.emit<any>('order_created', new OrderEvent(`Order created. Id ${Math.round(Math.random() * 100)}`));
-   return 'Hello World printed';
+    let message = new OrderEvent(`Order created.`, Math.round(Math.random() * 100));
+    this.client.emit<any>('order_created', message);
+    return message;
   }
 }
